@@ -10,15 +10,10 @@ variable "env" {
   description = "Environment for the resource."
 }
 
-variable "rg_name" {
-  type        = string
-  description = "Resource group name of the resource"
-  
-}
-
 variable "rg_location" {
   type        = string
   description = "The Azure Region"
+  default     = ""
 }
 
 variable "rg_tags" {

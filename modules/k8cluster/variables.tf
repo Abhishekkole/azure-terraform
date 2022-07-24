@@ -33,3 +33,24 @@ variable "nodepool_count" {
   description = "number of nodes"
 }
 
+variable "QA-ACR-CREDENTIALS"{
+  type = string
+  description = "Cerdentials of QA-ACR"
+}
+
+
+variable "QA-CDN-URL" {
+  type = string
+  description = "URL of QA CDN"
+}
+
+
+variable "QA-CONTAINER-WORKFLOW-IMAGE" {
+  type = string
+  description = "Container workflow image"
+}
+
+variable "QA-DBHOST" {
+  type= string
+  description = "Name of the QA Db Host"
+}

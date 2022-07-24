@@ -1,37 +1,42 @@
 variable "prefix" {
   type        = string
-  default     = ""
+  description = "Prefix for the resource."
 }
 
-#location
-variable "location" {
+variable "env" {
   type        = string
-  default     = "east us"
+  description = "Environment for the resource."
 }
 
-variable "mysql-admin-login" {
+variable "rg_location" {
   type        = string
-  default     = "testadmin"
 }
 
-variable "mysql-admin-password" {
+variable "rg_tags" {
+  type        = map(string)
+}
+
+variable "rg_name" {
   type        = string
-  default     = "admin@123"
 }
 
-variable "mysql-version" {
+variable "db_name" {
+  description="Name of the  DB"
+}
+
+variable "mysql_version" {
   type        = string
   description = "MySQL Server version to deploy"
   default     = "8.0"
 }
 
-variable "mysql-sku-name" {
+variable "mysql_sku_name" {
   type        = string
   description = "MySQL SKU Name"
   default     = "B_Gen5_1"
 }
 
-variable "mysql-storage" {
+variable "mysql_storage" {
   type        = string
   description = "MySQL Storage in MB, from 5120 MB to 4194304 MB"
   default     = "5120"

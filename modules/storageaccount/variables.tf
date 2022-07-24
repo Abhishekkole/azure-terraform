@@ -13,12 +13,19 @@ variable "rg_location" {
   description = "This is acr location"
 }
 
+variable "rg_tags" {
+  type        = map(string)
+  description = "Tag for the resource"
+}
+
 variable "rg_name" {
   type        = string
   description = "This is rg name to keep acr"
 }
 
-variable "rg_tags" {
-  type        = map(string)
-  description = "Tag for the resource"
+# Container common vars
+
+variable "containers" {
+  description = "Name of containers, if it contains illegal characters (,-_ etc) those will be truncated."
+  type        = list(string)
 }

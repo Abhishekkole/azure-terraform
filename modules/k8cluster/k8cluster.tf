@@ -1,13 +1,14 @@
-resource "azurerm_kubernetes_cluster" "k8cluster" {
-  name                = "${var.prefix}-${var.env}-k8scluster"
-  location            = var.rg_location
-  resource_group_name = var.rg_name
-  dns_prefix          = "${var.prefix}-${var.env}-k8s"
+
+resource "azurerm_kubernetes_cluster" "example" {
+  name                = "${var.prefix}-k8s"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+  dns_prefix          = "${var.prefix}-k8s"
 
   default_node_pool {
     name       = "default"
-    node_count = 1
-    vm_size    = var.k8s_vm_size
+    node_count =  1
+    vm_size    = "Standard_DS2_v2"
   }
 
   identity {
@@ -15,11 +16,13 @@ resource "azurerm_kubernetes_cluster" "k8cluster" {
   }
 }
 
-resource "azurerm_kubernetes_cluster_node_pool" "k8clusternodepool" {
-  count                 = var.nodepool_count
+resource "azurerm_kubernetes_cluster_node_pool" "example" {
+  
   name                  = "internal${count.index}"
-  kubernetes_cluster_id = azurerm_kubernetes_cluster.k8cluster.id
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.example.id
   vm_size               = "Standard_NC12"
-  node_count            = 1
-  tags                  = var.rg_tags
+  node_count            = 2
+
+
+
 }
